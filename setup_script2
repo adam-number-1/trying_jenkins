@@ -1,5 +1,4 @@
 #!/bin/bash
-. ~/.bashrc
 apt-get update
 apt-get upgrade
 agt-get python3.11.0
