@@ -14,7 +14,7 @@ pipeline{
                 sh 'pwd'
     			sh 'ls -la'
             script{
-                def out = sh script: './setup_script2' returnStdout: true
+                def out = sh script: './setup_script2', returnStdout: true
                 echo '${out}'
             }
 		    }
