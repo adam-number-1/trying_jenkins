@@ -10,8 +10,12 @@ pipeline{
     			sh 'ls -la'
     
     			echo 'changing python version to 3.11.0'
-    			sh './setup_script.sh'
-
+    			sh 'chmod +x ./setup_script'
+    			
+    			script{
+    			    def out=sh script:'./setup_script', returnStdout: true
+    			    echo "${out}"
+    			}
     			//sh '. ~/.profile'
 		    }
 		}
@@ -31,6 +35,7 @@ pipeline{
 			junit skipMarkingBuildUnstable: true, testResults: 'junitreport/output.xml'
 		}
 	}
-			
+	
+	
 	
 }
