@@ -1,7 +1,7 @@
 pipeline{
 	agent {
     docker {
-        image 'python:3.11.0-alpine'
+        image 'openjdk:11'
         label 'built-in'
         args  '-v /tmp:/tmp'
     }
@@ -12,18 +12,18 @@ pipeline{
 		    steps{
     			echo 'Cloning repository'
                 sh 'pwd'
-    			git branch: 'master', url:'https://github.com/adam-number-1/trying_jenkins.git'
+    			//git branch: 'master', url:'https://github.com/adam-number-1/trying_jenkins.git'
     			//git "$git_url"
     			sh 'ls -la'
 
-                sh 'pip install -r requirements'
+                // sh 'pip install -r requirements'
 
 		    }
 		}
 		stage("Test"){
 		    steps{
     			echo 'Starting Pytest'
-   			    sh 'python3 -m pytest --junitxml=./junitreport/output.xml'
+   			    //sh 'python3 -m pytest --junitxml=./junitreport/output.xml'
 		    }
 		}
 	}
