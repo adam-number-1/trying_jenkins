@@ -14,3 +14,7 @@ class TestFn:
     @pytest.mark.parametrize("input,output",[((2,4),6),((5,4),9)])
     def test_add(self, input, output):
         assert add(*input) == output
+
+    @pytest.mark.parametrize("input,output",[((4,2),2),((5,4),1)])
+    def test_substract(self, input, output):
+        assert substract(*input) == output

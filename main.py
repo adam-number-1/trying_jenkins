@@ -7,6 +7,9 @@ def triple(a: int) -> int:
 def add(a: int, b: int) -> int:
     return a+b
 
+def substract(a: int, b: int) -> int:
+    return a-b
+
 
 print(double(4))
 print(triple(4))
