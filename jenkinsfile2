@@ -1,3 +1,39 @@
 pipeline{
-    a
+	agent {
+    docker {
+        image 'python:3.11.0-alpine'
+        label 'built-in'
+        args  '-v /tmp:/tmp'
+    }
+    }
+
+	stages{
+		stage("GitHub Checkout and setup"){
+		    steps{
+    			echo 'Cloning repository'
+                sh 'pwd'
+    			git branch: 'master', url:'https://github.com/adam-number-1/trying_jenkins.git'
+    			//git "$git_url"
+    			sh 'ls -la'
+
+                sh 'pip install -r requirements'
+
+		    }
+		}
+		stage("Test"){
+		    steps{
+    			echo 'Starting Pytest'
+   			    sh 'python3 -m pytest --junitxml=./junitreport/output.xml'
+		    }
+		}
+	}
+	post{
+		always{
+			echo 'publishing JUnit test report'
+			junit skipMarkingBuildUnstable: true, testResults: 'junitreport/output.xml'
+		}
+	}
+	
+	
+	
 }
