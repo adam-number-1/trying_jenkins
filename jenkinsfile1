@@ -1,13 +1,36 @@
 pipeline{
-    agent any
-    stages{
-        stage("Checkout and setup"){
+	agent any
 
-        }
-    }
-    post{
-        always{
+	stages{
+		stage("GitHub Checkout and setup"){
+		    steps{
+    			echo 'Cloning repository'
+    			git branch: 'master', url:'https://github.com/adam-number-1/trying_jenkins.git'
+    			//git "$git_url"
+    			sh 'ls -la'
+    
+    			echo 'changing python version to 3.11.0'
+    			sh './setup_script.sh'
 
-        }
-    }
+    			//sh '. ~/.profile'
+		    }
+		}
+		stage("Test"){
+		    steps{
+    			echo 'Starting Pytest'
+   			    sh '''#!/bin/bash
+                      . ~/.bashrc
+                      python3 -m pytest --junitxml=./junitreport/output.xml
+                '''
+		    }
+		}
+	}
+	post{
+		always{
+			echo 'publishing JUnit test report'
+			junit skipMarkingBuildUnstable: true, testResults: 'junitreport/output.xml'
+		}
+	}
+			
+	
 }

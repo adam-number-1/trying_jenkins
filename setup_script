@@ -1,0 +1,11 @@
+#!/bin/bash
+. ~/.bashrc
+pyenv versions
+pyenv global 3.11.0
+pyenv versions
+python3 -V
+echo Creating virtual environment and installing dependencies
+python3 -m venv test_venv
+chmod +x ~/workspace/try_jen/test_venv/bin/activate
+test_venv/bin/activate
+pip install -r requirements.txt
