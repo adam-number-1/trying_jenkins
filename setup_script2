@@ -1,7 +1,7 @@
 #!/bin/bash
 
-yum update
-yum install python3.10.0
+wget https://www.python.org/ftp/python/3.11.0/Python-3.11.0.x86_64.rpm
+rpm Python-3.11.0.x86_64.rpm
 
 echo installing dependencies
 pip install -r requirements.txt
