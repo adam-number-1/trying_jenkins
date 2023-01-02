@@ -1,7 +1,7 @@
 pipeline{
 	agent {
     docker {
-        image 'python:3.10-jdk-alpine'
+        image 'adamstrejcovsky/jdk-python:3.11'
         label 'built-in'
         args  '-v /tmp:/tmp'
     }

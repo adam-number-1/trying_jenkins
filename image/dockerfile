@@ -1,0 +1,19 @@
+FROM alpine:3.17
+
+# Update the package manager, install the JDK 11, Python 3.10, and Git, and then clear the package cache
+RUN apk update && \
+    apk add openjdk11 python3 git && \
+    rm -rf /var/cache/apk/* && \
+    apk add dpkg
+
+# Set the JAVA_HOME environment variable
+ENV JAVA_HOME /usr/lib/jvm/java-11-openjdk
+
+# Set the default Python version to 3.10
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+# Create a user for Jenkins
+RUN adduser -D jenkins
+
+# Set the home directory for the Jenkins user
+ENV HOME /var/lib/jenkins
