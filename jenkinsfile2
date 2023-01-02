@@ -14,11 +14,12 @@ pipeline{
                 sh 'pwd'
     			sh 'ls -la'
                 sh 'chmod +x setup_script2'
-            
+                sh 'pip install pytest'
+            /*
             script{
                 def out = sh script: 'setup_script2', returnStdout: true
                 echo '${out}'
-            }
+            } */
 		    }
 		}
 		stage("Test"){
