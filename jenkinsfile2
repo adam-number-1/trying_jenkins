@@ -13,13 +13,12 @@ pipeline{
     			echo 'Cloning repository'
                 sh 'pwd'
     			sh 'ls -la'
-                sh 'pip3 install pytest'
-                // sh 'chmod +x setup_script2' this is not needed
-            /* not needed
+                sh 'chmod +x setup_script2'
+            not needed
             script{
-                def out = sh script: './setup_script2', returnStdout: true
+                def out = sh script: 'setup_script2', returnStdout: true
                 echo '${out}'
-            } */
+            }
 		    }
 		}
 		stage("Test"){

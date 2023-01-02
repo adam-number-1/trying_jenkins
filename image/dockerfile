@@ -3,6 +3,7 @@ FROM alpine:3.17
 # Update the package manager, install the JDK 11, Python 3.10, and Git, and then clear the package cache
 RUN apk update && \
     apk add openjdk11 python3 git && \
+    apk add py3-pip && \
     rm -rf /var/cache/apk/* && \
     apk add dpkg
 
