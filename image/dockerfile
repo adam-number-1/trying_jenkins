@@ -17,7 +17,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 RUN adduser -D jenkins
 
 RUN mkdir var/lib/jenkins
-RUN chmod a+g var/lib/jenkins
+RUN chmod a+rwx var/lib/jenkins
 RUN chown jenkins var/lib/jenkins
 # Set the home directory for the Jenkins user
 ENV HOME /var/lib/jenkins

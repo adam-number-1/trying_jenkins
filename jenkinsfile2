@@ -14,7 +14,7 @@ pipeline{
                 
                 sh 'pwd'
     			sh 'ls -la'
-                sh 'chmod a+g .'
+                sh 'chmod a+rwx .'
                 // sh 'chmod +x setup_script2'
                 sh 'pip install pytest'
             /*
