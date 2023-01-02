@@ -13,6 +13,7 @@ pipeline{
     			echo 'Cloning repository'
                 sh 'pwd'
     			sh 'ls -la'
+                sh 'pip install pytest'
                 // sh 'chmod +x setup_script2' this is not needed
             /* not needed
             script{
